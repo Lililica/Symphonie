@@ -1,0 +1,47 @@
+# ninja log v6
+14	102	1752572176276936980	build.ninja	f2c0f95bb4fbb3a2
+290	376	1752391938844244540	/Users/lililica/Documents/Symphonie Project/Symphonie/bin/Debug/Symphonie	87042b41b7f49662
+547	1338	1752142333453920637	lib/quick_imgui/CMakeFiles/ImGui.dir/lib/imgui/imgui.cpp.o	46a600d88ea48981
+29	192	1752391729044476655	CMakeFiles/Symphonie.dir/src/Game/force.cpp.o	91bc5ee14a3d1508
+454	1169	1752142333361219327	lib/quick_imgui/CMakeFiles/ImGui.dir/lib/imgui/imgui_widgets.cpp.o	6719e98bc4a611e1
+313	1045	1752142333220643619	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o	6c6ea1931af94e58
+1088	1145	1752142333995389593	lib/quick_imgui/lib/glfw/src/libglfw3.a	edc3eff0c4dc300b
+29	375	1752391729044799617	CMakeFiles/Symphonie.dir/src/Game/game.cpp.o	4d21a60ea00eb423
+685	1096	1752142333592733227	lib/quick_imgui/CMakeFiles/quick_imgui.dir/src/quick_imgui.cpp.o	9edddfd070029200
+742	1155	1752142333649577133	lib/quick_imgui/CMakeFiles/quick_imgui.dir/src/ImGuiWrapper.cpp.o	98859b157b269fee
+323	1088	1752142333230039791	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o	8bd2f8f7c269c3e2
+19	37	1752155736017581870	CMakeFiles/Symphonie.dir/src/test.cpp.o	8ba781c1b498e5
+299	943	1752142333206452840	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o	894657692a39f769
+892	941	1752142333799149932	lib/quick_imgui/libglad.a	31a1a4c5f0d10dc
+307	1029	1752142333214426226	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m.o	a2e6e61319f0b431
+626	925	1752142333533173957	lib/quick_imgui/CMakeFiles/ImGui.dir/lib/imgui/misc/cpp/imgui_stdlib.cpp.o	969ac64557cfdf7f
+659	742	1752142333566468953	lib/quick_imgui/CMakeFiles/ImGui.dir/lib/imgui/backends/imgui_impl_opengl3.cpp.o	eb179c936cfa1f7
+286	637	1752142333193263558	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o	74bc663ad86326db
+347	1044	1752142333254440530	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o	a90fb3a8d7767be8
+14	546	1752142332921262564	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/input.c.o	260f4207dec01585
+3	15	1752391938557069661	/Users/lililica/Documents/Symphonie Project/Symphonie/build/CMakeFiles/cmake.verify_globs	a2e49d40943ae5fe
+14	307	1752142332921627604	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o	d10305e94004923b
+17	313	1752142332924202219	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/null_window.c.o	7e256dd5d1022cae
+418	685	1752142333324946967	lib/quick_imgui/CMakeFiles/ImGui.dir/lib/imgui/imgui_tables.cpp.o	932639cbbc5aae4a
+1338	1385	1752142334245086881	lib/quick_imgui/libImGui.a	20086ab65e24bd33
+356	454	1752142333263372788	lib/quick_imgui/CMakeFiles/glad.dir/lib/glad/src/glad.c.o	1f7a1db3b4330794
+385	832	1752142333292009011	lib/quick_imgui/CMakeFiles/ImGui.dir/lib/imgui/imgui_draw.cpp.o	7cbd383d35cb8d86
+378	892	1752142333285503036	lib/quick_imgui/CMakeFiles/ImGui.dir/lib/imgui/imgui_demo.cpp.o	640ccf3320f6f1ef
+1385	1414	1752142334292215199	lib/quick_imgui/libquick_imgui.a	99a1f75339c1e17d
+15	384	1752142332922847016	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o	2da96f594f1539f3
+14	287	1752142332921136356	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/init.c.o	13c454587b092cfa
+289	626	1752142333195922339	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o	a50352feaa79b999
+14	356	1752142332921505854	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/platform.c.o	c8696cfd2057cf6
+29	439	1752391729044934285	CMakeFiles/Symphonie.dir/src/Game/pCube.cpp.o	d22361bd3f2a587c
+29	375	1752391729045171995	CMakeFiles/Symphonie.dir/src/main.cpp.o	9585ae4e361f558a
+15	323	1752142332922712100	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/null_init.c.o	ae1dafe5e2ce37e6
+637	1012	1752142333544740704	lib/quick_imgui/CMakeFiles/ImGui.dir/lib/imgui/backends/imgui_impl_glfw.cpp.o	9128f59627c02e39
+14	378	1752142332920893565	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/context.c.o	740ce976dc57f3a2
+287	659	1752142333194744760	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o	3fa712ea6ec655c5
+14	283	1752142332921383355	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/monitor.c.o	e77c81a155b6d6d3
+23	290	1752391938577451615	CMakeFiles/Symphonie.dir/src/Game/render.cpp.o	73ab0f672a98d4e0
+14	417	1752142332921756603	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/window.c.o	75065da26dbe3af1
+15	299	1752142332922090602	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o	20d19bd8a1658ad1
+832	1227	1752142333739125872	lib/quick_imgui/CMakeFiles/quick_imgui.dir/src/AverageTime.cpp.o	98328ee1118c6178
+17	347	1752142332924762217	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o	b3a2ec5bf2f82ba3
+15	289	1752142332922401518	lib/quick_imgui/lib/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o	67782aac4081140a

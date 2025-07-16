@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "lib/quick_imgui/lib/glfw/src",
+		"source" : "lib/quick_imgui/lib/glfw/src"
+	}
+}

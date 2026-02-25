@@ -1,38 +1,26 @@
 [
 {
-  "directory": "/Users/lililica/Documents/Symphonie Project/Symphonie/build",
-  "command": "/usr/bin/clang++ -I\"/Users/lililica/Documents/Symphonie Project/Symphonie/src\" -isystem /opt/homebrew/Cellar/raylib/5.5/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk -Werror -Wall -Wextra -Wpedantic -pedantic-errors -Wimplicit-fallthrough -I/opt/homebrew/Cellar/raylib/5.5/include -o CMakeFiles/Symphonie.dir/src/Game/Control/control.cpp.o -c \"/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/Control/control.cpp\"",
-  "file": "/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/Control/control.cpp",
+  "directory": "/Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/build",
+  "command": "/usr/bin/clang++ -I/Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/src -isystem /opt/homebrew/Cellar/raylib/5.5/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk -Werror -Wall -Wextra -Wpedantic -pedantic-errors -Wimplicit-fallthrough -I/opt/homebrew/Cellar/raylib/5.5/include -o CMakeFiles/Symphonie.dir/src/Game/Control/control.cpp.o -c /Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/src/Game/Control/control.cpp",
+  "file": "/Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/src/Game/Control/control.cpp",
   "output": "CMakeFiles/Symphonie.dir/src/Game/Control/control.cpp.o"
 },
 {
-  "directory": "/Users/lililica/Documents/Symphonie Project/Symphonie/build",
-  "command": "/usr/bin/clang++ -I\"/Users/lililica/Documents/Symphonie Project/Symphonie/src\" -isystem /opt/homebrew/Cellar/raylib/5.5/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk -Werror -Wall -Wextra -Wpedantic -pedantic-errors -Wimplicit-fallthrough -I/opt/homebrew/Cellar/raylib/5.5/include -o CMakeFiles/Symphonie.dir/src/Game/Player/force.cpp.o -c \"/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/Player/force.cpp\"",
-  "file": "/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/Player/force.cpp",
-  "output": "CMakeFiles/Symphonie.dir/src/Game/Player/force.cpp.o"
-},
-{
-  "directory": "/Users/lililica/Documents/Symphonie Project/Symphonie/build",
-  "command": "/usr/bin/clang++ -I\"/Users/lililica/Documents/Symphonie Project/Symphonie/src\" -isystem /opt/homebrew/Cellar/raylib/5.5/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk -Werror -Wall -Wextra -Wpedantic -pedantic-errors -Wimplicit-fallthrough -I/opt/homebrew/Cellar/raylib/5.5/include -o CMakeFiles/Symphonie.dir/src/Game/Player/player.cpp.o -c \"/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/Player/player.cpp\"",
-  "file": "/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/Player/player.cpp",
-  "output": "CMakeFiles/Symphonie.dir/src/Game/Player/player.cpp.o"
-},
-{
-  "directory": "/Users/lililica/Documents/Symphonie Project/Symphonie/build",
-  "command": "/usr/bin/clang++ -I\"/Users/lililica/Documents/Symphonie Project/Symphonie/src\" -isystem /opt/homebrew/Cellar/raylib/5.5/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk -Werror -Wall -Wextra -Wpedantic -pedantic-errors -Wimplicit-fallthrough -I/opt/homebrew/Cellar/raylib/5.5/include -o CMakeFiles/Symphonie.dir/src/Game/Render/render.cpp.o -c \"/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/Render/render.cpp\"",
-  "file": "/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/Render/render.cpp",
+  "directory": "/Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/build",
+  "command": "/usr/bin/clang++ -I/Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/src -isystem /opt/homebrew/Cellar/raylib/5.5/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk -Werror -Wall -Wextra -Wpedantic -pedantic-errors -Wimplicit-fallthrough -I/opt/homebrew/Cellar/raylib/5.5/include -o CMakeFiles/Symphonie.dir/src/Game/Render/render.cpp.o -c /Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/src/Game/Render/render.cpp",
+  "file": "/Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/src/Game/Render/render.cpp",
   "output": "CMakeFiles/Symphonie.dir/src/Game/Render/render.cpp.o"
 },
 {
-  "directory": "/Users/lililica/Documents/Symphonie Project/Symphonie/build",
-  "command": "/usr/bin/clang++ -I\"/Users/lililica/Documents/Symphonie Project/Symphonie/src\" -isystem /opt/homebrew/Cellar/raylib/5.5/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk -Werror -Wall -Wextra -Wpedantic -pedantic-errors -Wimplicit-fallthrough -I/opt/homebrew/Cellar/raylib/5.5/include -o CMakeFiles/Symphonie.dir/src/Game/game.cpp.o -c \"/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/game.cpp\"",
-  "file": "/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/game.cpp",
+  "directory": "/Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/build",
+  "command": "/usr/bin/clang++ -I/Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/src -isystem /opt/homebrew/Cellar/raylib/5.5/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk -Werror -Wall -Wextra -Wpedantic -pedantic-errors -Wimplicit-fallthrough -I/opt/homebrew/Cellar/raylib/5.5/include -o CMakeFiles/Symphonie.dir/src/Game/game.cpp.o -c /Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/src/Game/game.cpp",
+  "file": "/Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/src/Game/game.cpp",
   "output": "CMakeFiles/Symphonie.dir/src/Game/game.cpp.o"
 },
 {
-  "directory": "/Users/lililica/Documents/Symphonie Project/Symphonie/build",
-  "command": "/usr/bin/clang++ -I\"/Users/lililica/Documents/Symphonie Project/Symphonie/src\" -isystem /opt/homebrew/Cellar/raylib/5.5/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk -Werror -Wall -Wextra -Wpedantic -pedantic-errors -Wimplicit-fallthrough -I/opt/homebrew/Cellar/raylib/5.5/include -o CMakeFiles/Symphonie.dir/src/main.cpp.o -c \"/Users/lililica/Documents/Symphonie Project/Symphonie/src/main.cpp\"",
-  "file": "/Users/lililica/Documents/Symphonie Project/Symphonie/src/main.cpp",
+  "directory": "/Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/build",
+  "command": "/usr/bin/clang++ -I/Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/src -isystem /opt/homebrew/Cellar/raylib/5.5/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk -Werror -Wall -Wextra -Wpedantic -pedantic-errors -Wimplicit-fallthrough -I/opt/homebrew/Cellar/raylib/5.5/include -o CMakeFiles/Symphonie.dir/src/main.cpp.o -c /Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/src/main.cpp",
+  "file": "/Users/lililica/Documents/IMAC/Semestre5/MoteurPhysique/RaylibTemp/src/main.cpp",
   "output": "CMakeFiles/Symphonie.dir/src/main.cpp.o"
 }
 ]

@@ -1,18 +1,16 @@
 #pragma once
 
-#include "../Player/force.hpp"
 #include <raylib.h>
-
-struct Box {
-  Vector3 startPos{0, 0, 0};
-  Vector3 endPos{5, 2, 5};
-};
 
 struct KeyBinding {
   int moveForward = KEY_W;
   int moveBackward = KEY_S;
   int moveRight = KEY_D;
   int moveLeft = KEY_A;
+  int cameraRotateRight = KEY_RIGHT;
+  int cameraRotateLeft = KEY_LEFT;
+  int cameraRotateUp = KEY_UP;
+  int cameraRotateDown = KEY_DOWN;
 
   int jump = KEY_SPACE;
   int dash = KEY_Q;
@@ -20,11 +18,7 @@ struct KeyBinding {
 };
 
 namespace Control {
+void update_camera(Camera3D &camera, const KeyBinding &keyBinding, float speed,
+                   float deltaTime);
 
-void deplacement_key(Force &force, float &speed, float duration,
-                     bool needDefaultMoving, KeyBinding &key,
-                     float &angleOrigin);
-
-float mouse_movement_TETA(float &sensibility);
-float mouse_movement_PHI(float &sensibility);
 } // namespace Control

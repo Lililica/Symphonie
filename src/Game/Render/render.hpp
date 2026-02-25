@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Game/Object/object.hpp"
 #include <memory>
 #include <raylib.h>
 
@@ -12,7 +13,7 @@ private:
 
 public:
   void init();
-  void draw3D();
+  void draw3D(Object::Sphere &sphere);
 
   std::unique_ptr<Camera3D> getCamera() {
     return std::make_unique<Camera3D>(currentCamera);

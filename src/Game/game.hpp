@@ -1,5 +1,6 @@
 #pragma once
 #include "Game/Control/control.hpp"
+#include "Game/Object/object.hpp"
 #include "Render/render.hpp"
 #include <raylib.h>
 
@@ -13,6 +14,9 @@ private:
   Render render;
 
   Parameter parameter;
+
+  // Objects in the game
+  Object::Sphere sphere;
 
   // Control
   KeyBinding keyBinding;

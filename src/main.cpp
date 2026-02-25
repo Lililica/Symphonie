@@ -9,7 +9,7 @@ int main(void) {
 
   game.init();
 
-  SetExitKey(KEY_A);
+  SetExitKey(KEY_ESCAPE);
   SetTargetFPS(60); // Set our game to run at 60 frames-per-second
   //--------------------------------------------------------------------------------------
 

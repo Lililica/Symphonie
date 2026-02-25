@@ -31,10 +31,6 @@ target_sources(${PROJECT_NAME} PRIVATE ${MY_SOURCES})
 target_include_directories(${PROJECT_NAME} PRIVATE src)
 
 
-# Add quick-imgui library
-add_subdirectory(lib/quick_imgui)
-target_link_libraries(${PROJECT_NAME} PRIVATE quick_imgui::quick_imgui)
-
 # Link OpenGL on Windows
 if (WIN32)
     target_link_libraries(${PROJECT_NAME} PRIVATE opengl32)
@@ -43,6 +39,8 @@ endif()
 
 find_package(raylib REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
+
+
 
 
 

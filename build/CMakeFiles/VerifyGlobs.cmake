@@ -14,10 +14,11 @@ endif()
 # MY_SOURCES at CMakeLists.txt:29 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/lililica/Documents/Symphonie Project/Symphonie/src/*.cpp")
 set(OLD_GLOB
-  "/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/force.cpp"
+  "/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/Control/control.cpp"
+  "/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/Player/force.cpp"
+  "/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/Player/player.cpp"
+  "/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/Render/render.cpp"
   "/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/game.cpp"
-  "/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/pCube.cpp"
-  "/Users/lililica/Documents/Symphonie Project/Symphonie/src/Game/render.cpp"
   "/Users/lililica/Documents/Symphonie Project/Symphonie/src/main.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

@@ -10,7 +10,7 @@ class pMat {
 private:
   Vector3 position;
   Vector3 velocity;
-  Vector3 force;
+  Vector3 force{};
   float mass;
 
 public:
@@ -18,7 +18,6 @@ public:
   pMat(Vector3 pos, Vector3 vel, float m)
       : position(pos), velocity(vel), mass(m) {}
 
-  void resetForce() { force = Vector3{0, 0, 0}; }
   Vector3 getPosition() const { return position; }
   Vector3 getVelocity() const { return velocity; }
   float getMass() const { return mass; }
@@ -26,16 +25,15 @@ public:
   //   Force application
   void addForce(const Vector3 &f) { force = force + f; }
 
-  void update(float deltaTime) {
+  void update_leapfrog(float h) {
     // Update velocity and position using simple Euler integration
     Vector3 acceleration =
         Vector3{force.x / mass, force.y / mass, force.z / mass};
-    velocity = velocity + Vector3{acceleration.x * deltaTime,
-                                  acceleration.y * deltaTime,
-                                  acceleration.z * deltaTime};
+    velocity = velocity + Vector3{acceleration.x * h, acceleration.y * h,
+                                  acceleration.z * h};
     position =
-        position + Vector3{velocity.x * deltaTime, velocity.y * deltaTime,
-                           velocity.z * deltaTime};
+        position + Vector3{velocity.x * h, velocity.y * h, velocity.z * h};
+    force = Vector3{0, 0, 0}; // Reset force after update
 
     // Set limit plane (ground)
     if (position.y < 0) {

@@ -23,6 +23,7 @@ private:
   KeyBinding keyBinding;
   float speed = 20.0f;
   float frameRate = 120.0f;
+  float simulationSpeed = 1.0f;
 
   float sphereRadius = .5f;
   float gravity = -9.81f;
@@ -30,7 +31,7 @@ private:
   float restitution = -100.0f;
   float friction = 1.f;
 
-  int nbrBoules = 10;
+  int nbrBoules = 100;
   float spacing = 2.f;
 
 public:
@@ -38,6 +39,8 @@ public:
   void update();
 
   void draw();
+
+  void end() { render.end(); }
 
   //   -------
 };

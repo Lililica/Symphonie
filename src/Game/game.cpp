@@ -5,6 +5,8 @@
 #include <raylib.h>
 
 void Game::init() {
+  SetConfigFlags(FLAG_MSAA_4X_HINT); // Enable Multi Sampling Anti Aliasing 4x
+                                     // (if available)
   InitWindow(screenWidth, screenHeight,
              "raylib [core] example - 3d camera mode");
 
@@ -64,13 +66,6 @@ void Game::update() {
   Control::update_camera(*camera, keyBinding, speed, delta);
   render.setCamera(*camera);
 
-  // Object update
-  auto fct_reset_force_sphere = [&](int i) {
-    Sphere &s = dynamic_cast<Sphere &>(*allObj[i]);
-    MP::pMat *phys = s.getPhysics();
-    phys->resetForce();
-  };
-
   auto fct_add_gravity_sphere = [&](int i) {
     Sphere &s = dynamic_cast<Sphere &>(*allObj[i]);
     MP::pMat *phys = s.getPhysics();
@@ -86,7 +81,7 @@ void Game::update() {
   auto fct_update_sphere = [&](int i) {
     Sphere &s = dynamic_cast<Sphere &>(*allObj[i]);
     MP::pMat *phys = s.getPhysics();
-    phys->update(delta);
+    phys->update_leapfrog(simulationSpeed * delta);
   };
 
   auto fct_set_stiffness_damping_ressort = [&](int i, float stiffness,
@@ -97,7 +92,6 @@ void Game::update() {
   };
 
   for (int i = 0; i < nbrBoules; i++) {
-    fct_reset_force_sphere(i);
     fct_add_gravity_sphere(i);
   }
 
@@ -117,5 +111,5 @@ void Game::update() {
 
 void Game::draw() {
   // Draw section
-  render.draw3D(allObj, restitution, friction, gravity);
+  render.draw3D(allObj, restitution, friction, gravity, simulationSpeed);
 }

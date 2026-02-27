@@ -13,7 +13,8 @@ private:
 
 public:
   void init();
-  void draw3D(Object::Sphere &sphere);
+  void draw3D(std::vector<std::unique_ptr<Object>> &objects, float &restitution,
+              float &friction, float &gravity);
 
   std::unique_ptr<Camera3D> getCamera() {
     return std::make_unique<Camera3D>(currentCamera);

@@ -3,9 +3,16 @@
 #include "../Physique/moteurPhy.hpp"
 #include <raylib.h>
 
-namespace Object {
+class Object {
+private:
+  Color color;
 
-class Sphere {
+public:
+  virtual ~Object() = default;
+  virtual void draw() const = 0;
+};
+
+class Sphere : public Object {
 private:
   // Physical properties
   MP::pMat physics;
@@ -22,7 +29,25 @@ public:
 
   MP::pMat *getPhysics() { return &physics; }
 
-  void draw() const { DrawSphere(physics.getPosition(), radius, color); }
+  void draw() const override {
+    DrawSphere(physics.getPosition(), radius, color);
+  }
 };
 
-} // namespace Object
+class Ressort : public Object {
+private:
+  MP::pLink link;
+
+  //   Rendering properties
+  Color color;
+
+public:
+  Ressort(Color color, float stiffness, float damping)
+      : link(stiffness, damping), color(color) {}
+
+  MP::pLink *getLink() { return &link; };
+
+  void draw() const override {
+    DrawLine3D(link.get_pos_m1(), link.get_pos_m2(), color);
+  }
+};

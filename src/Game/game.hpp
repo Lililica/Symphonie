@@ -2,6 +2,7 @@
 #include "Game/Control/control.hpp"
 #include "Game/Object/object.hpp"
 #include "Render/render.hpp"
+#include <memory>
 #include <raylib.h>
 
 struct Parameter {
@@ -16,11 +17,21 @@ private:
   Parameter parameter;
 
   // Objects in the game
-  Object::Sphere sphere;
+  std::vector<std::unique_ptr<Object>> allObj;
 
   // Control
   KeyBinding keyBinding;
   float speed = 20.0f;
+  float frameRate = 120.0f;
+
+  float sphereRadius = .5f;
+  float gravity = -9.81f;
+
+  float restitution = -100.0f;
+  float friction = 1.f;
+
+  int nbrBoules = 10;
+  float spacing = 2.f;
 
 public:
   void init();

@@ -31,7 +31,7 @@ private:
   float restitution = -100.0f;
   float friction = 1.f;
 
-  int nbrBoules = 100;
+  int nbrBoules = 10;
   float spacing = 2.f;
 
 public:

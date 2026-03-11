@@ -13,10 +13,10 @@ void Render::draw3D(std::vector<std::unique_ptr<Object>> &objects,
                     float &simulationSpeed) {
 
   // Set Light position and view position
-  Vector3 viewPos = currentCamera.position;
-  SetShaderValue(shader, shader.locs[SHADER_LOC_VECTOR_VIEW], &viewPos,
-                 SHADER_UNIFORM_VEC3);
-  UpdateLightValues(shader, light);
+  // Vector3 viewPos = currentCamera.position;
+  // SetShaderValue(shader, shader.locs[SHADER_LOC_VECTOR_VIEW], &viewPos,
+  //                SHADER_UNIFORM_VEC3);
+  // UpdateLightValues(shader, light);
 
   BeginDrawing();
 
@@ -33,13 +33,14 @@ void Render::draw3D(std::vector<std::unique_ptr<Object>> &objects,
   for (auto &obj : objects) {
     obj->draw();
   }
-  DrawCube(Vector3{1.0f, 10.0f, 0.0f}, 1.0f, 1.0f, 1.0f, GRAY);
+  // DrawCube(Vector3{1.0f, 10.0f, 0.0f}, 1.0f, 1.0f, 1.0f, GRAY);
   // EndShaderMode();
 
-  if (light.enabled)
-    DrawSphereEx(light.position, 0.5f, 8, 8, light.color);
-  else
-    DrawSphereWires(light.position, 0.5f, 8, 8, ColorAlpha(light.color, 0.3f));
+  // if (light.enabled)
+  //   DrawSphereEx(light.position, 0.5f, 8, 8, light.color);
+  // else
+  //   DrawSphereWires(light.position, 0.5f, 8, 8, ColorAlpha(light.color,
+  //   0.3f));
   EndMode3D();
 
   // UI
@@ -55,11 +56,13 @@ void Render::draw3D(std::vector<std::unique_ptr<Object>> &objects,
 
     DrawText("Restitution", 10, 30, 20, DARKGRAY);
     GuiSliderBar(Rectangle{10, 60, 200, 20}, nullptr, nullptr, &restitution,
-                 -200.0f, 0.0f);
+                 0.0f, 200.0f);
 
-    DrawText("Friction", 10, 100, 20, DARKGRAY);
-    GuiSliderBar(Rectangle{10, 130, 200, 20}, nullptr, nullptr, &friction, 0.0f,
-                 10.0f);
+    // DrawText("Friction", 10, 100, 20, DARKGRAY);
+    // GuiSliderBar(Rectangle{10, 130, 200, 20}, nullptr, nullptr, &friction,
+    // 0.0f,
+    //              1.0f);
+    friction = restitution / 10.0f;
 
     DrawText("Gravity", 10, 170, 20, DARKGRAY);
     GuiSliderBar(Rectangle{10, 200, 200, 20}, nullptr, nullptr, &gravity,
@@ -87,7 +90,8 @@ void Render::init() {
   currentCamera.fovy = 45.0f;
   currentCamera.projection = CAMERA_PERSPECTIVE;
 
-  // Load basic lighting shader
+// Load basic lighting shader
+#if 0
   shader = LoadShader(
       TextFormat("../../src/Game/Render/shaders/lighting.vs", GLSL_VERSION),
       TextFormat("../../src/Game/Render/shaders/lighting.fs", GLSL_VERSION));
@@ -98,4 +102,5 @@ void Render::init() {
 
   light = CreateLight(LIGHT_POINT, Vector3{0.0f, 10.0f, 0.0f},
                       Vector3{0.0f, 1.0f, 0.0f}, GREEN, shader);
+#endif
 }

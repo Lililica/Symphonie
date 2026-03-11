@@ -26,13 +26,21 @@ private:
   float simulationSpeed = 1.0f;
 
   float sphereRadius = .5f;
-  float gravity = -9.81f;
+  float gravity = -1.f;
 
-  float restitution = -100.0f;
-  float friction = 1.f;
+  float restitution = 100.f;
+  float friction = 0.5f;
 
-  int nbrBoules = 10;
-  float spacing = 2.f;
+  int nbrBoules = 30;
+  float spacing = 1.f;
+
+  // Flag Dimensions
+  float widthFlag = 10.0f;
+  float heightFlag = 5.0f;
+  int nbrSegmentsFlag = 30;
+
+  void initLineBoule();
+  void initFlag();
 
 public:
   void init();

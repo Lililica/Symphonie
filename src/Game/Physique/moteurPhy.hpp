@@ -51,8 +51,8 @@ private:
   Vector3 fFriction = {};
 
   // Ressort paramater
-  float k = -20;
-  float z = 1.0f;
+  float k = 0.5;
+  float z = 0.05f;
 
   float l0 = 0.;
 
@@ -83,16 +83,17 @@ public:
     // Hooke's law: F = -k * (1 - l0 / d) * (M2 - M1)
     Vector3 M1M2 = mass2->getPosition() - mass1->getPosition();
     float dM1M2 = norme_V3(M1M2);
-    fHook = -k * (1 - l0 / dM1M2) * M1M2;
+    dM1M2 = (dM1M2 == 0) ? 0.0001f : dM1M2; // Avoid division by zero
+    fHook = (k) * (1 - l0 / dM1M2) * M1M2;
 
     // frein cinetique : F = -c * (V2 - V1)
     Vector3 V1V2 = mass2->getVelocity() - mass1->getVelocity();
-    fFriction = -z * V1V2;
+    fFriction = -(z)*V1V2;
   }
 
   void send_forces() {
     mass1->addForce(fHook - fFriction);
-    mass2->addForce(-fHook - fFriction);
+    mass2->addForce(-fHook + fFriction);
   };
 };
 }; // namespace MP

@@ -22,7 +22,7 @@ void Game::init() {
 
 void Game::initFlag() {
 
-  float hauteur = 30.f;
+  float hauteur = 15.f;
 
   // Particles : indice 0 to nbrSegmentsFlag*nbrSegmentsFlag-1
   for (int i = 0; i < nbrSegmentsFlag; i++) {
@@ -32,33 +32,26 @@ void Game::initFlag() {
           heightFlag / 2 - j * heightFlag / (nbrSegmentsFlag - 1) + hauteur;
       allObj.emplace_back(std::make_unique<Sphere>(Vector3{x, y, 0},
                                                    Vector3{0, 0, 0}, 1.0f, 0.1f,
-                                                   Color{255, 0, 100, 200}));
+                                                   Color{255, 0, 100, 100}));
     }
   }
-  int nbrParticles = allObj.size();
-  std::cout << "Number of particles : " << nbrParticles << std::endl;
-
-  allObj.emplace_back(std::make_unique<Sphere>(
-      Vector3{-widthFlag / 2 - 1, heightFlag / 2 + hauteur, 0},
-      Vector3{0, 0, 0}, 1.0f, 1.0f, Color{255, 0, 255, 100}));
-  allObj.emplace_back(std::make_unique<Sphere>(
-      Vector3{widthFlag / 2 + 1, heightFlag / 2 + hauteur, 0}, Vector3{0, 0, 0},
-      1.0f, 1.0f, Color{255, 0, 255, 100}));
 
   // Ressorts :
   /*
   We want this structure :
-  (0,0) -- (1,0) -- (2,0) -- ... -- (nbrSegmentsFlag-1,0)
-    |        |        |              |
-  (0,1) -- (1,1) -- (2,1) -- ... -- (nbrSegmentsFlag-1,1)
-    |        |        |              |
-   ...      ...      ...            ...
-    |        |        |              |
-  (0,nbrSegmentsFlag-1) -- ... -- (nbrSegmentsFlag-1,nbrSegmentsFlag-1)
+  (0,0) -- (1,0)
+    |   \/   |
+    |   /\   |
+  (0,1) -- (1,1)
 
-  So we have (nbrSegmentsFlag-1)*nbrSegmentsFlag ressorts in horizontal and
-  nbrSegmentsFlag*(nbrSegmentsFlag-1) ressorts in vertical, for a total of
-  2*nbrSegmentsFlag*(nbrSegmentsFlag-1) ressorts.
+
+  So we have (nbrSegmentsFlag-1)*nbrSegmentsFlag ressorts in horizontal,
+  nbrSegmentsFlag*(nbrSegmentsFlag-1) ressorts in vertical,
+  (nbrSegmentsFlag-1)*(nbrSegmentsFlag-1) ressorts in diagonal left to right,
+  (nbrSegmentsFlag-1)*(nbrSegmentsFlag-1) ressorts in diagonal right to left,
+  and 2 ressorts to link the top 2 corners. So a total of
+  2*(nbrSegmentsFlag-1)*nbrSegmentsFlag +
+  2*(nbrSegmentsFlag-1)*(nbrSegmentsFlag-1) + 2 ressorts.
   */
 
   for (int i = 0; i < nbrSegmentsFlag; i++) {
@@ -77,28 +70,46 @@ void Game::initFlag() {
       Sphere &s4 =
           dynamic_cast<Sphere &>(*allObj[(j + 1) * nbrSegmentsFlag + i]);
       r2.getLink()->connect_masses(s3.getPhysics(), s4.getPhysics());
+
+      if (i < nbrSegmentsFlag - 1) {
+        allObj.emplace_back(std::make_unique<Ressort>(Color{50, 0, 50, 150},
+                                                      restitution, friction));
+        Ressort &r3 = dynamic_cast<Ressort &>(*allObj.back());
+        Sphere &s5 = dynamic_cast<Sphere &>(*allObj[i * nbrSegmentsFlag + j]);
+        Sphere &s6 =
+            dynamic_cast<Sphere &>(*allObj[(i + 1) * nbrSegmentsFlag + j + 1]);
+        r3.getLink()->connect_masses(s5.getPhysics(), s6.getPhysics());
+
+        // if (j > 0) {
+        allObj.emplace_back(std::make_unique<Ressort>(Color{50, 0, 50, 150},
+                                                      restitution, friction));
+        Ressort &r4 = dynamic_cast<Ressort &>(*allObj.back());
+        Sphere &s7 =
+            dynamic_cast<Sphere &>(*allObj[i * nbrSegmentsFlag + j + 1]);
+        Sphere &s8 =
+            dynamic_cast<Sphere &>(*allObj[(i + 1) * nbrSegmentsFlag + j]);
+        r4.getLink()->connect_masses(s7.getPhysics(), s8.getPhysics());
+        // }
+      }
+      if (i < nbrSegmentsFlag - 2 && j < nbrSegmentsFlag - 2) {
+        allObj.emplace_back(std::make_unique<Ressort>(Color{50, 0, 50, 150},
+                                                      restitution, friction));
+        Ressort &r5 = dynamic_cast<Ressort &>(*allObj.back());
+        Sphere &s9 = dynamic_cast<Sphere &>(*allObj[i * nbrSegmentsFlag + j]);
+        Sphere &s10 =
+            dynamic_cast<Sphere &>(*allObj[(i + 2) * nbrSegmentsFlag + j]);
+        r5.getLink()->connect_masses(s9.getPhysics(), s10.getPhysics());
+
+        allObj.emplace_back(std::make_unique<Ressort>(Color{50, 0, 50, 150},
+                                                      restitution, friction));
+        Ressort &r6 = dynamic_cast<Ressort &>(*allObj.back());
+        Sphere &s11 = dynamic_cast<Sphere &>(*allObj[i * nbrSegmentsFlag + j]);
+        Sphere &s12 =
+            dynamic_cast<Sphere &>(*allObj[i * nbrSegmentsFlag + j + 2]);
+        r6.getLink()->connect_masses(s11.getPhysics(), s12.getPhysics());
+      }
     }
   }
-
-  allObj.emplace_back(
-      std::make_unique<Ressort>(Color{50, 0, 50, 150}, restitution, friction));
-  Ressort &r = dynamic_cast<Ressort &>(*allObj.back());
-  Sphere &s1 = dynamic_cast<Sphere &>(*allObj[0]);
-  Sphere &s2 =
-      dynamic_cast<Sphere &>(*allObj[nbrSegmentsFlag * nbrSegmentsFlag]);
-  r.getLink()->connect_masses(s1.getPhysics(), s2.getPhysics());
-
-  allObj.emplace_back(
-      std::make_unique<Ressort>(Color{50, 0, 50, 150}, restitution, friction));
-  Ressort &r2 = dynamic_cast<Ressort &>(*allObj.back());
-  Sphere &s3 = dynamic_cast<Sphere &>(
-      *allObj[(nbrSegmentsFlag) * (nbrSegmentsFlag - 1)]);
-  Sphere &s4 =
-      dynamic_cast<Sphere &>(*allObj[nbrSegmentsFlag * nbrSegmentsFlag + 1]);
-  r2.getLink()->connect_masses(s3.getPhysics(), s4.getPhysics());
-
-  std::cout << "Number of ressorts : " << allObj.size() - nbrParticles
-            << std::endl;
 }
 
 void Game::initLineBoule() {
@@ -157,6 +168,14 @@ void Game::update() {
     phys->addForce(Vector3{0, gravity * phys->getMass(), 0}); // Gravity
   };
 
+  auto fct_add_vent_sphere = [&](int i) {
+    Sphere &s = dynamic_cast<Sphere &>(*allObj[i]);
+    MP::pMat *phys = s.getPhysics();
+    float forceVent = 1.f;
+    phys->addForce(Vector3{forceVent * (float)cos(GetTime() * 0.1f), 0,
+                           forceVent * (float)sin(GetTime() * 0.1f)}); // Vent
+  };
+
   auto fct_compute_send_forces_ressort = [&](int i) {
     Ressort &r = dynamic_cast<Ressort &>(*allObj[i]);
     r.getLink()->compute_forces();
@@ -166,7 +185,7 @@ void Game::update() {
   auto fct_update_sphere = [&](int i) {
     Sphere &s = dynamic_cast<Sphere &>(*allObj[i]);
     MP::pMat *phys = s.getPhysics();
-    phys->update_leapfrog(simulationSpeed * delta);
+    phys->update_leapfrog(delta);
   };
 
   auto fct_set_stiffness_damping_ressort = [&](int i, float stiffness,
@@ -190,19 +209,22 @@ void Game::update() {
     fct_update_sphere(i);
   }
 #else
-  for (int i = 0; i < nbrSegmentsFlag * nbrSegmentsFlag; i++) {
+  for (int i = nbrSegmentsFlag; i < nbrSegmentsFlag * nbrSegmentsFlag; i++) {
     fct_add_gravity_sphere(i);
+    fct_add_vent_sphere(i);
   }
 
-  for (int i = nbrSegmentsFlag * nbrSegmentsFlag + 2;
-       i < 2 * (nbrSegmentsFlag * (nbrSegmentsFlag - 1)) + 2 +
-               nbrSegmentsFlag * nbrSegmentsFlag + 2;
+  for (int i = nbrSegmentsFlag * nbrSegmentsFlag;
+       i < 2 * (nbrSegmentsFlag * (nbrSegmentsFlag - 1)) +
+               nbrSegmentsFlag * nbrSegmentsFlag +
+               2 * (nbrSegmentsFlag - 1) * (nbrSegmentsFlag - 1) +
+               2 * (nbrSegmentsFlag - 2) * (nbrSegmentsFlag - 2);
        i++) {
     fct_set_stiffness_damping_ressort(i, restitution, friction);
     fct_compute_send_forces_ressort(i);
   }
 
-  for (int i = 0; i < nbrSegmentsFlag * nbrSegmentsFlag; i++) {
+  for (int i = nbrSegmentsFlag; i < nbrSegmentsFlag * nbrSegmentsFlag; i++) {
     fct_update_sphere(i);
   }
 
@@ -215,5 +237,6 @@ void Game::update() {
 
 void Game::draw() {
   // Draw section
-  render.draw3D(allObj, restitution, friction, gravity, simulationSpeed);
+
+  render.draw3D(allObj, restitution, friction, gravity);
 }

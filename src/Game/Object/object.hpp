@@ -30,7 +30,7 @@ public:
   MP::pMat *getPhysics() { return &physics; }
 
   void draw() const override {
-    DrawSphere(physics.getPosition(), radius, color);
+    DrawCube(physics.getPosition(), radius, radius, radius, color);
   }
 };
 

@@ -9,8 +9,7 @@
 #define GLSL_VERSION 330
 
 void Render::draw3D(std::vector<std::unique_ptr<Object>> &objects,
-                    float &restitution, float &friction, float &gravity,
-                    float &simulationSpeed) {
+                    float &restitution, float &friction, float &gravity) {
 
   // Set Light position and view position
   // Vector3 viewPos = currentCamera.position;
@@ -30,8 +29,8 @@ void Render::draw3D(std::vector<std::unique_ptr<Object>> &objects,
 
   // Object visualization
   // BeginShaderMode(shader);
-  for (auto &obj : objects) {
-    obj->draw();
+  for (int i = 0; i < 50 * 50; i++) {
+    objects[i]->draw();
   }
   // DrawCube(Vector3{1.0f, 10.0f, 0.0f}, 1.0f, 1.0f, 1.0f, GRAY);
   // EndShaderMode();
@@ -62,15 +61,11 @@ void Render::draw3D(std::vector<std::unique_ptr<Object>> &objects,
     // GuiSliderBar(Rectangle{10, 130, 200, 20}, nullptr, nullptr, &friction,
     // 0.0f,
     //              1.0f);
-    friction = restitution / 10.0f;
+    // friction = restitution / 10.0f;
 
     DrawText("Gravity", 10, 170, 20, DARKGRAY);
     GuiSliderBar(Rectangle{10, 200, 200, 20}, nullptr, nullptr, &gravity,
                  -20.0f, 20.0f);
-
-    DrawText("Simulation Speed", 10, 240, 20, DARKGRAY);
-    GuiSliderBar(Rectangle{10, 270, 200, 20}, nullptr, nullptr,
-                 &simulationSpeed, 0.1f, 10.0f);
   }
   DrawFPS(10, 10);
   EndDrawing();

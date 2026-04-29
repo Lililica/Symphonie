@@ -1,6 +1,12 @@
 #include "Game/game.hpp"
 #include "raylib.h"
 
+float previousTimeDrawing = 0.0f;
+static const float frameRate = 30.0f;
+
+float previousTimeUpdating = 0.0f;
+static const float simulationSpeed = 1200.0f;
+
 int main(void) {
   // Initialization
   //--------------------------------------------------------------------------------------
@@ -15,28 +21,35 @@ int main(void) {
   // Main game loop
   while (!WindowShouldClose()) // Detect window close button or ESC key
   {
-    auto start = std::chrono::system_clock::now();
     // Update
     //----------------------------------------------------------------------------------
+    // if (previousTimeUpdating == 0.0f) {
+    //   previousTimeUpdating = GetTime();
+    //   game.update();
+    // } else {
+    //   float currentTime = GetTime();
+    //   if (currentTime - previousTimeUpdating >= 1.0f / simulationSpeed) {
+    //     previousTimeUpdating = currentTime;
+    //     game.update();
+    //   }
+    // }
     game.update();
     //----------------------------------------------------------------------------------
 
-    auto end = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed_seconds = end - start;
-    std::cout << "Time to update : " << elapsed_seconds.count() << "seconds"
-              << std::endl;
-
-    start = std::chrono::system_clock::now();
-
     // Draw
     //----------------------------------------------------------------------------------
+    // if (previousTimeDrawing == 0.0f) {
+    //   previousTimeDrawing = GetTime();
+    //   game.draw();
+    // } else {
+    //   float currentTime = GetTime();
+    //   if (currentTime - previousTimeDrawing >= 1.0f / frameRate) {
+    //     previousTimeDrawing = currentTime;
+    //     game.draw();
+    //   }
+    // }
     game.draw();
     //----------------------------------------------------------------------------------
-
-    end = std::chrono::system_clock::now();
-    elapsed_seconds = end - start;
-    std::cout << "Time to draw : " << elapsed_seconds.count() << "seconds"
-              << std::endl;
   }
 
   // De-Initialization

@@ -21,7 +21,7 @@ private:
 public:
   void init();
   void draw3D(std::vector<std::unique_ptr<Object>> &objects, float &restitution,
-              float &friction, float &gravity, float &simulationSpeed);
+              float &friction, float &gravity);
   void end() { UnloadShader(shader); };
 
   std::unique_ptr<Camera3D> getCamera() {

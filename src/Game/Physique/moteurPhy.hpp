@@ -36,10 +36,10 @@ public:
     force = Vector3{0, 0, 0}; // Reset force after update
 
     // Set limit plane (ground)
-    if (position.y < 0) {
-      position.y = 0;
-      velocity.y = 0;
-    }
+    // if (position.y < 0) {
+    //   position.y = 0;
+    //   velocity.y = 0;
+    // }
   }
 };
 class pLink {

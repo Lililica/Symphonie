@@ -22,8 +22,6 @@ private:
   // Control
   KeyBinding keyBinding;
   float speed = 20.0f;
-  float frameRate = 120.0f;
-  float simulationSpeed = 1.0f;
 
   float sphereRadius = .5f;
   float gravity = -1.f;
@@ -35,9 +33,9 @@ private:
   float spacing = 1.f;
 
   // Flag Dimensions
-  float widthFlag = 10.0f;
-  float heightFlag = 5.0f;
-  int nbrSegmentsFlag = 30;
+  float widthFlag = 7.0f;
+  float heightFlag = 7.0f;
+  int nbrSegmentsFlag = 50;
 
   void initLineBoule();
   void initFlag();

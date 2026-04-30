@@ -230,6 +230,7 @@ void Game::update() {
 
 #endif
 
+  // Toggle fullscreen
   // -----
   if (IsKeyReleased(KEY_P))
     ToggleFullscreen();

@@ -32,7 +32,7 @@ void Game::initFlag() {
           heightFlag / 2 - j * heightFlag / (nbrSegmentsFlag - 1) + hauteur;
       allObj.emplace_back(std::make_unique<Sphere>(Vector3{x, y, 0},
                                                    Vector3{0, 0, 0}, 1.0f, 0.1f,
-                                                   Color{255, 0, 100, 100}));
+                                                   Color{255, 0, 100, 255}));
     }
   }
 
@@ -54,17 +54,19 @@ void Game::initFlag() {
   2*(nbrSegmentsFlag-1)*(nbrSegmentsFlag-1) + 2 ressorts.
   */
 
+  Color ressortColor = Color{50, 0, 50, 150};
+
   for (int i = 0; i < nbrSegmentsFlag; i++) {
     for (int j = 0; j < nbrSegmentsFlag - 1; j++) {
-      allObj.emplace_back(std::make_unique<Ressort>(Color{50, 0, 50, 150},
-                                                    restitution, friction));
+      allObj.emplace_back(
+          std::make_unique<Ressort>(ressortColor, restitution, friction));
       Ressort &r = dynamic_cast<Ressort &>(*allObj.back());
       Sphere &s1 = dynamic_cast<Sphere &>(*allObj[i * nbrSegmentsFlag + j]);
       Sphere &s2 = dynamic_cast<Sphere &>(*allObj[i * nbrSegmentsFlag + j + 1]);
       r.getLink()->connect_masses(s1.getPhysics(), s2.getPhysics());
 
-      allObj.emplace_back(std::make_unique<Ressort>(Color{50, 0, 50, 150},
-                                                    restitution, friction));
+      allObj.emplace_back(
+          std::make_unique<Ressort>(ressortColor, restitution, friction));
       Ressort &r2 = dynamic_cast<Ressort &>(*allObj.back());
       Sphere &s3 = dynamic_cast<Sphere &>(*allObj[j * nbrSegmentsFlag + i]);
       Sphere &s4 =
@@ -72,8 +74,8 @@ void Game::initFlag() {
       r2.getLink()->connect_masses(s3.getPhysics(), s4.getPhysics());
 
       if (i < nbrSegmentsFlag - 1) {
-        allObj.emplace_back(std::make_unique<Ressort>(Color{50, 0, 50, 150},
-                                                      restitution, friction));
+        allObj.emplace_back(
+            std::make_unique<Ressort>(ressortColor, restitution, friction));
         Ressort &r3 = dynamic_cast<Ressort &>(*allObj.back());
         Sphere &s5 = dynamic_cast<Sphere &>(*allObj[i * nbrSegmentsFlag + j]);
         Sphere &s6 =
@@ -81,8 +83,8 @@ void Game::initFlag() {
         r3.getLink()->connect_masses(s5.getPhysics(), s6.getPhysics());
 
         // if (j > 0) {
-        allObj.emplace_back(std::make_unique<Ressort>(Color{50, 0, 50, 150},
-                                                      restitution, friction));
+        allObj.emplace_back(
+            std::make_unique<Ressort>(ressortColor, restitution, friction));
         Ressort &r4 = dynamic_cast<Ressort &>(*allObj.back());
         Sphere &s7 =
             dynamic_cast<Sphere &>(*allObj[i * nbrSegmentsFlag + j + 1]);
@@ -92,16 +94,16 @@ void Game::initFlag() {
         // }
       }
       if (i < nbrSegmentsFlag - 2 && j < nbrSegmentsFlag - 2) {
-        allObj.emplace_back(std::make_unique<Ressort>(Color{50, 0, 50, 150},
-                                                      restitution, friction));
+        allObj.emplace_back(
+            std::make_unique<Ressort>(ressortColor, restitution, friction));
         Ressort &r5 = dynamic_cast<Ressort &>(*allObj.back());
         Sphere &s9 = dynamic_cast<Sphere &>(*allObj[i * nbrSegmentsFlag + j]);
         Sphere &s10 =
             dynamic_cast<Sphere &>(*allObj[(i + 2) * nbrSegmentsFlag + j]);
         r5.getLink()->connect_masses(s9.getPhysics(), s10.getPhysics());
 
-        allObj.emplace_back(std::make_unique<Ressort>(Color{50, 0, 50, 150},
-                                                      restitution, friction));
+        allObj.emplace_back(
+            std::make_unique<Ressort>(ressortColor, restitution, friction));
         Ressort &r6 = dynamic_cast<Ressort &>(*allObj.back());
         Sphere &s11 = dynamic_cast<Sphere &>(*allObj[i * nbrSegmentsFlag + j]);
         Sphere &s12 =
@@ -113,6 +115,8 @@ void Game::initFlag() {
 }
 
 void Game::initLineBoule() {
+  Color ressortColor = Color{50, 0, 50, 150};
+
   // Spheres objects : indice 0 to nbrBoules-1
   float startPointX = -(nbrBoules + 1) * spacing / 2.0f;
   for (int i = 0; i < nbrBoules; i++) {
@@ -132,8 +136,8 @@ void Game::initLineBoule() {
 
   // Ressorts : indice nbrBoules+2 to nbrBoules+nbrBoules+1
   for (int i = 0; i < nbrBoules + 1; i++) {
-    allObj.emplace_back(std::make_unique<Ressort>(Color{50, 0, 50, 150},
-                                                  restitution, friction));
+    allObj.emplace_back(
+        std::make_unique<Ressort>(ressortColor, restitution, friction));
   }
 
   auto fct_link = [&](int i1, int i2, int iRessort) {
@@ -230,7 +234,6 @@ void Game::update() {
 
 #endif
 
-  // Toggle fullscreen
   // -----
   if (IsKeyReleased(KEY_P))
     ToggleFullscreen();

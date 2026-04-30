@@ -9,13 +9,14 @@
 #define GLSL_VERSION 330
 
 void Render::draw3D(std::vector<std::unique_ptr<Object>> &objects,
-                    float &restitution, float &friction, float &gravity) {
+                    float &restitution, [[maybe_unused]] float &friction,
+                    float &gravity) {
 
   // Set Light position and view position
-  // Vector3 viewPos = currentCamera.position;
-  // SetShaderValue(shader, shader.locs[SHADER_LOC_VECTOR_VIEW], &viewPos,
-  //                SHADER_UNIFORM_VEC3);
-  // UpdateLightValues(shader, light);
+  Vector3 viewPos = currentCamera.position;
+  SetShaderValue(shader, shader.locs[SHADER_LOC_VECTOR_VIEW], &viewPos,
+                 SHADER_UNIFORM_VEC3);
+  UpdateLightValues(shader, light);
 
   BeginDrawing();
 
@@ -26,14 +27,16 @@ void Render::draw3D(std::vector<std::unique_ptr<Object>> &objects,
   // Space visualization
   DrawLine3D(Vector3{0.0f, 0.0f, 0.0f}, Vector3{.0f, 10.0f, .0f}, BLUE);
   DrawGrid(100, 10.0f);
+  DrawPlane(Vector3{0.0f, 0.0f, 0.0f}, Vector2{100.0f, 100.0f},
+            Fade(DARKGREEN, 0.20f));
 
   // Object visualization
-  // BeginShaderMode(shader);
+  BeginShaderMode(shader);
   for (int i = 0; i < 50 * 50; i++) {
     objects[i]->draw();
   }
   // DrawCube(Vector3{1.0f, 10.0f, 0.0f}, 1.0f, 1.0f, 1.0f, GRAY);
-  // EndShaderMode();
+  EndShaderMode();
 
   // if (light.enabled)
   //   DrawSphereEx(light.position, 0.5f, 8, 8, light.color);
@@ -85,17 +88,16 @@ void Render::init() {
   currentCamera.fovy = 45.0f;
   currentCamera.projection = CAMERA_PERSPECTIVE;
 
-// Load basic lighting shader
-#if 0
+  // Load basic lighting shader
   shader = LoadShader(
       TextFormat("../../src/Game/Render/shaders/lighting.vs", GLSL_VERSION),
       TextFormat("../../src/Game/Render/shaders/lighting.fs", GLSL_VERSION));
   shader.locs[SHADER_LOC_VECTOR_VIEW] = GetShaderLocation(shader, "viewPos");
   ambientLoc = GetShaderLocation(shader, "ambient");
-  float ambientValue[4] = {0.1f, 0.1f, 0.1f, 1.0f};
+  float ambientValue[4] = {0.18f, 0.2f, 0.24f, 1.0f};
   SetShaderValue(shader, ambientLoc, ambientValue, SHADER_UNIFORM_VEC4);
 
-  light = CreateLight(LIGHT_POINT, Vector3{0.0f, 10.0f, 0.0f},
-                      Vector3{0.0f, 1.0f, 0.0f}, GREEN, shader);
-#endif
+  light =
+      CreateLight(LIGHT_POINT, Vector3{0.0f, 10.0f, 0.0f},
+                  Vector3{0.0f, 0.0f, 0.0f}, Color{255, 245, 235, 255}, shader);
 }

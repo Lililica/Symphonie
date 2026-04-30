@@ -1,6 +1,7 @@
 #pragma once
 #include "Game/Control/control.hpp"
 #include "Game/Object/object.hpp"
+#include "Game/Physique/collision.hpp"
 #include "Render/render.hpp"
 #include <memory>
 #include <raylib.h>
@@ -29,6 +30,9 @@ private:
   float restitution = 100.f;
   float friction = 0.5f;
 
+  // Prolongation - thème 2 : point fixe géométrique de contact
+  std::vector<MP::FixedPlaneContact> fixedContacts;
+
   int nbrBoules = 30;
   float spacing = 1.f;
 
@@ -39,6 +43,7 @@ private:
 
   void initLineBoule();
   void initFlag();
+  void initContacts();
 
 public:
   void init();

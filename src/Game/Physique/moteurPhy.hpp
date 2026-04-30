@@ -2,7 +2,6 @@
 #include "../utils.hpp"
 #include <cstddef>
 #include <iostream>
-#include <memory>
 #include <raylib.h>
 
 namespace MP {
@@ -20,7 +19,12 @@ public:
 
   Vector3 getPosition() const { return position; }
   Vector3 getVelocity() const { return velocity; }
+  Vector3 getForce() const { return force; }
   float getMass() const { return mass; }
+
+  void setPosition(const Vector3 &p) { position = p; }
+  void setVelocity(const Vector3 &v) { velocity = v; }
+  void setForce(const Vector3 &f) { force = f; }
 
   //   Force application
   void addForce(const Vector3 &f) { force = force + f; }
